@@ -89,7 +89,6 @@ class Login_Page extends StatelessWidget {
                             );
                     },
                   ),
-                  Text( "Hi", ),
                   SizedBox(
                     height: height / 40,
                   ),
