@@ -11,18 +11,8 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   void _init(InitEvent event, Emitter<SplashState> emit) async {
-    // var status = await Permission.
-    // if (!status.isGranted) {
-    //   PermissionStatus permissionStatus = await Permission.camera.request();
-    //   print("permissionStatus ${permissionStatus.isGranted}");
-    // } else {
-    //   // access the resoruce
-    // }
-
-    emit(state.copyWith(formstatus: SplashLoading()));
-    await Future.delayed(Duration(seconds: 3));
-    var response = await Dio().get('http://www.google.com');
-    print(response);
+    emit(state.copyWith(formstatus: const SplashLoading()));
+    await Future.delayed(const Duration(seconds: 3));
     emit(state.copyWith(formstatus: SplashFinished()));
   }
 }

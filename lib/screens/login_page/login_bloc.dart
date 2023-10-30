@@ -2,9 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:meta/meta.dart';
+import 'package:ecomservice/model/LoginModel.dart';
 
-import '../../model/LoginModel.dart';
 import '../../repo/repository.dart';
 import 'FormSubmissionStatus.dart';
 
@@ -38,8 +37,13 @@ _langChange()
       if(value.statusCode == 200)
         {
           LoginModel liLogin = LoginModel.fromJson(jsonDecode(value.data));
-          print(liLogin.location);
-          emit(state.copyWith(formSubmissionStatus:  LoginSuccess()));
+          // print(liLogin.location);
+          if(liLogin.status==true) {
+            emit(state.copyWith(formSubmissionStatus:  LoginSuccess()));
+          }
+          else {
+            emit(state.copyWith(formSubmissionStatus:  LoginFailed(liLogin.message.toString())));
+          }
         }
 
       else
@@ -62,7 +66,7 @@ _langChange()
         emit(state.copyWith(formSubmissionStatus: TextError(usernameError: "Username is empty",passwordError: "Password is Empty")));
       }
         else if(event.password.length<6&&event.password.isNotEmpty) {
-        emit(state.copyWith(formSubmissionStatus: TextError(passwordError: "Password is empty",usernameError: "")));
+        emit(state.copyWith(formSubmissionStatus: TextError(passwordError: "Password must be 6 characters",usernameError: "")));
       }
         else if(event.username.isEmpty) {
           emit(state.copyWith(formSubmissionStatus: TextError(usernameError: "Username is empty",passwordError: "")));
