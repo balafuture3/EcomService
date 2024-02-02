@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
 
 class CustomBackground extends StatefulWidget {
   Widget child;
-  CustomBackground({Key? key,required this.child}) : super(key: key);
+  CustomBackground({Key? key, required this.child}) : super(key: key);
 
   @override
   State<CustomBackground> createState() => _CustomBackgroundState();
 }
-
 
 class _CustomBackgroundState extends State<CustomBackground> {
   @override
@@ -21,10 +19,7 @@ class _CustomBackgroundState extends State<CustomBackground> {
             image: DecorationImage(
               image: AssetImage('assets/background1.jpg'),
               fit: BoxFit.cover,
-            )
-        ),
-        child:widget.child
-    );
+            )),
+        child: widget.child);
   }
 }
-

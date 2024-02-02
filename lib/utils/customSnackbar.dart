@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomSnackBar {
@@ -6,11 +5,11 @@ class CustomSnackBar {
   String displaytext;
   int duration;
   Color color;
-  CustomSnackBar(this.context,this.displaytext,this.duration,this.color){
-       ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+  CustomSnackBar(this.context, this.displaytext, this.duration, this.color) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(displaytext),
       duration: Duration(seconds: duration),
-      backgroundColor:color,
+      backgroundColor: color,
     ));
-
-}}
+  }
+}
